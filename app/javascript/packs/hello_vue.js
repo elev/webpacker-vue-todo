@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }).$mount('hello')
 
   console.log(app)
+  console.log('vue jawns')
+  console.log('ready');
 })
 
 
