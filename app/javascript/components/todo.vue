@@ -13,6 +13,7 @@
       </div>
     </div>
     <p>
+      <span>COUNT:</span>
       {{ countTimes3 }}
       <button v-on:click="increment">Go Up</button>
     </p>

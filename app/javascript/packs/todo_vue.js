@@ -6,12 +6,12 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue'
-import App from '../app.vue'
+import Todo from '../components/todo.vue'
 
 window.onload = function () {
     new Vue({
       el: '#app',
-      render: h => h(App)
+      render: h => h(Todo)
     })
 }
 
