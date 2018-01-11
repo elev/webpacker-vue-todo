@@ -12,11 +12,6 @@
         <input type="text" v-model="newTodo" v-on:keyup.enter="addTodo" placeholder="add new todo">
       </div>
     </div>
-    <p>
-      <span>COUNT:</span>
-      {{ countTimes3 }}
-      <button v-on:click="increment">Go Up</button>
-    </p>
   </div>
 </template>
 
@@ -25,22 +20,12 @@
 export default {
   data: function () {
     return {
-      count: 1,
-      newTodo: '',
-      todos: [
-        { title: 'hello',
-          completed: true
-        },
-        {
-          title: 'get make to work with brew',
-          completed: false
-        }
-      ]
+      newTodo: ''
     }
   },
   computed: {
-    countTimes3: function() {
-      return this.count * 3
+    todos: function () {
+      return this.$store.getters.todos
     }
   },
   methods: {
@@ -48,10 +33,14 @@ export default {
       this.todos.push({ title: this.newTodo, completed: false});
       this.newTodo = '';
     },
-    increment: function() {
-      this.count++
-    }
+    getTodos: function() {
+      this.$store.commit('loadTodos')
+    },
+  },
+  created: function() {
+    this.getTodos()
   }
+  
 }
 </script>
 

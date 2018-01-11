@@ -7,10 +7,12 @@
 
 import Vue from 'vue'
 import Todo from '../components/todo.vue'
+import Store from '../stores/store'
 
 window.onload = function () {
     new Vue({
       el: '#app',
+      store: Store,
       render: h => h(Todo)
     })
 }
