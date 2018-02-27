@@ -4,20 +4,23 @@ This project uses webpacker.
 
 #TODOs for the TODO
 
-* currently:
-Building a test API in another gem, will do that with the todos and then retroactively add them here.
 
-Then I will try to do it all from memory
+build tests
 
-Then I will try to do it with loginzzz
+build error handling for apis
 
-Bonus, maybe add another componnent to make it like trello, like categorized Todos.
+build better validation for Api
 
-BIG TODO:
-	tabs to spaces and then set space amounts in VIM.
+create data via seed
 
-Also, look into creating with data via seeds RB
+sync up api to vue store
+
+phase 2
+update schema to have users for the todos.
+
+Bonus, maybe add another componnent to make it like 
+trello, like categorized Todos.
 
 
-TODO: Use the rails api to build the api..
+
 
