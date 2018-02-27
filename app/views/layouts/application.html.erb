@@ -13,6 +13,13 @@
   </head>
 
   <body>
+    <pre>
+    <%= @todos.to_yaml %>
+    </pre>
+    <%= form_tag("/todo", method: "post") do %>
+      <input type="text" name="title">
+      <button type="submit">Submit</button>
+    <% end %>
     <div id="app"></div>
     <%= yield %>
   </body>

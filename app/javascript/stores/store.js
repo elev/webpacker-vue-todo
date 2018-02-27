@@ -14,7 +14,6 @@ export default new Vuex.Store({
   },
   mutations: {
     loadTodos: function(state) {
-      console.log('TODO -- Use Rails Backend')
       fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
         .then(function (response) { return response.json() })
         .then(function (todos) { state.todos = todos; })

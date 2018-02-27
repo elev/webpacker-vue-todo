@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project uses webpacker.
 
-Things you may want to cover:
+#TODOs for the TODO
 
-* Ruby version
+* currently:
+Building a test API in another gem, will do that with the todos and then retroactively add them here.
 
-* System dependencies
+Then I will try to do it all from memory
 
-* Configuration
+Then I will try to do it with loginzzz
 
-* Database creation
+Bonus, maybe add another componnent to make it like trello, like categorized Todos.
 
-* Database initialization
+BIG TODO:
+	tabs to spaces and then set space amounts in VIM.
 
-* How to run the test suite
+Also, look into creating with data via seeds RB
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+TODO: Use the rails api to build the api..
 
-* ...
