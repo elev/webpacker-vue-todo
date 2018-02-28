@@ -14,9 +14,10 @@ export default new Vuex.Store({
   },
   mutations: {
     loadTodos: function(state) {
-      fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
-        .then(function (response) { return response.json() })
-        .then(function (todos) { state.todos = todos; })
+      fetch('/todos')
+        .then(response => { return response.json() })
+        .catch(error => console.error('Error:', error))
+        .then(response => { state.todos = response.data; });
     },
 
     addTodo: function(state, payload) {
