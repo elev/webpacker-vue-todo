@@ -9,8 +9,6 @@ build error handling for apis
 
 build better validation for Api
 
-create data via seed
-
 sync up api to vue store
 
 phase 2
