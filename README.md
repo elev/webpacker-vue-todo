@@ -5,8 +5,6 @@ This project uses webpacker.
 #TODOs for the TODO
 
 
-build tests
-
 build error handling for apis
 
 build better validation for Api

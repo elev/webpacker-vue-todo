@@ -12,9 +12,11 @@ class TodosController < ApplicationController
 
   def update
     @todo = Todo.find(params[:id])
+    title = params[:title] || @todo.title
+    completed = params[:completed] || @todo.completed
 
-    if @todo.update_attributes( title: params[:title],
-                                completed: params[:completed] )
+    if @todo.update_attributes( title: title,
+                                completed: completed )
       @todos = Todo.all()
       render json: { status: 200,
                       data: @todos }
