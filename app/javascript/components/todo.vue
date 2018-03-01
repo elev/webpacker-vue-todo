@@ -30,8 +30,10 @@ export default {
   },
   methods: {
     addTodo: function() {
-      this.todos.push({ title: this.newTodo, completed: false});
-      this.newTodo = '';
+      this.$store.commit('addTodo', {
+        title: this.newTodo, 
+        completed: false 
+      });
     },
     getTodos: function() {
       this.$store.commit('loadTodos')

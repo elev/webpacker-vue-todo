@@ -21,7 +21,14 @@ export default new Vuex.Store({
     },
 
     addTodo: function(state, payload) {
-      state.todos.push(payload);
+      fetch('/todos',{
+        headers: {
+              'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({ todo: payload })
+      }).catch(error => console.error('Error:', error ))
+      .then( state.todos.push(payload) );
     }
   }
 });

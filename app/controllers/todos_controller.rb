@@ -1,4 +1,5 @@
 class TodosController < ApplicationController
+
   def show
     @todos = Todo.all()
     render 'todo'
@@ -33,11 +34,16 @@ class TodosController < ApplicationController
   end
 
   def create
-    @newTodo = Todo.new(title: params[:title], 
-                        completed: false)
+    @newTodo = Todo.new(todo_create_params)
     @newTodo.save
     @todos = Todo.all()
     render json: { status: 200,
                   data: @todos }
+  end
+
+  private
+
+  def todo_create_params
+    params.require(:todo).permit(:title, :completed)
   end
 end
