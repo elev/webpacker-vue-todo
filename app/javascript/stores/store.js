@@ -21,14 +21,28 @@ export default new Vuex.Store({
     },
 
     addTodo: function(state, payload) {
-      fetch('/todos',{
+      fetch('/todos', {
         headers: {
               'Content-Type': 'application/json'
         },
         method: 'POST',
         body: JSON.stringify({ todo: payload })
-      }).catch(error => console.error('Error:', error ))
+      })
+      .catch(error => console.error('Error:', error ))
       .then( state.todos.push(payload) );
+    },
+
+    deleteTodo: function(state, payload) {
+      fetch(`/todos/${payload.todo.id}`, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'DELETE'
+      })
+      .catch(error => console.error('Error:', error ))
+      .then((response) => { 
+        state.todos = state.todos.filter(todo => todo.id != payload.todo.id)
+      });
     }
   }
 });

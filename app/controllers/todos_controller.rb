@@ -26,11 +26,14 @@ class TodosController < ApplicationController
 
   def destroy
     @todo = Todo.find(params[:id])
-    @todo.destroy
-
-    @todos = Todo.all()
-    render json: { status: 200,
-                  data: @todos}
+    
+    if @todo.destroy
+      @todos = Todo.all()
+      flash[:success] = "Item Deleted"
+      render json: { status: 204, body: nil }
+    else
+      flash[:error] = "Action failed"
+    end
   end
 
   def create

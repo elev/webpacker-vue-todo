@@ -4,10 +4,10 @@ This project uses webpacker.
 
 #TODOs for the TODO
 ==============================
-1. You are in the store figuring out how to get data from the API
-it's coming from a secondary level
-
-2. we may need to do some error handling in vue.
+Build delete and edit functionality
+in vue
+have it sent that to rails.
+// https://github.com/evil-icons/evil-icons/blob/master/assets/icons/ei-trash.svg
 =============================
 
 build error handling for apis

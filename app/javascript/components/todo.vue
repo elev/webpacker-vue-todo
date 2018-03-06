@@ -5,6 +5,7 @@
         <div class="todo">
           <input type="checkbox" v-model="todo.completed">
           <label v-bind:class="{ 'todo-completed': todo.completed }">{{ todo.title }}</label>
+          <a @click="deleteTodo(todo)">delete</a>
         </div>
       </div>
       <div class="new-todo">
@@ -38,6 +39,9 @@ export default {
     getTodos: function() {
       this.$store.commit('loadTodos')
     },
+    deleteTodo: function(todo) {
+      this.$store.commit('deleteTodo', { todo });
+    }
   },
   created: function() {
     this.getTodos()
