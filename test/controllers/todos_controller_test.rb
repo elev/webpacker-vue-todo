@@ -23,7 +23,12 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
 
   test "create" do
     assert_difference('Todo.count') do
-      post todos_url, params: { title: 'read book' }
+      post todos_url, params: { 
+        todo: {
+          title: 'read book',
+          completed: false
+        }
+      }
     end
   end
 end
