@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <div class="todos">
+      <div style="height:200px;width:200px" class="todo-editing"></div>
+
       <div v-for="todo in todos">
-        <div class="todo">
+        <div class="todo" :class="{ 'todo-editing': todo === isEditing }">
           <input type="checkbox" v-model="todo.completed">
-          <label v-bind:class="{ 'todo-completed': todo.completed }">{{ todo.title }}</label>
+          <label class="todo-label" :class="{ 'todo-completed': todo.completed }" @click="toggleEdit(todo)">{{ todo.title }}</label>
+          <input class="todo-edit" type="text" name="update" @keyup.enter="editTodo(todo)" placeholder="{todo.title}" value="{todo.title}">
           <a @click="deleteTodo(todo)">delete</a>
         </div>
       </div>
@@ -21,7 +24,8 @@
 export default {
   data: function () {
     return {
-      newTodo: ''
+      newTodo: '',
+      isEditing: {}
     }
   },
   computed: {
@@ -38,6 +42,12 @@ export default {
     },
     getTodos: function() {
       this.$store.commit('loadTodos')
+    },
+    editTodo: function(todo) {
+
+    },
+    toggleEdit: function(todo) {
+      this.isEditing = todo;
     },
     deleteTodo: function(todo) {
       this.$store.commit('deleteTodo', { todo });
@@ -87,4 +97,19 @@ a {
 .todo-completed {
   text-decoration: line-through;
 }
+
+
+.todo-edit {
+  display: none;
+}
+
+.todo-label {
+  display: inline-block;
+}
+
+.todo-editing .todo-label{ display: none; }
+
+.todo-editing .todo-edit { display: inline-block; }
+
+
 </style>

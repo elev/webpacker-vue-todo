@@ -4,16 +4,15 @@ This project uses webpacker.
 
 #TODOs for the TODO
 ==============================
-Build edit functionality
-in vue
-have it sent that to rails.
+
+build better transitions for edit functionality
+
+send edit to rails.
 =============================
 
 build error handling for apis
 
 build better validation for Api
-
-sync up api to vue store
 
 trash SVG
 https://github.com/evil-icons/evil-icons/blob/master/assets/icons/ei-trash.svg
