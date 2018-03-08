@@ -15,7 +15,7 @@ export default new Vuex.Store({
   mutations: {
     loadTodos: function(state) {
       fetch('/todos')
-        .then(response => { return response.json() })
+        .then(response => { return response.json(); })
         .catch(error => console.error('Error:', error))
         .then(response => { state.todos = response.data; });
     },
@@ -30,6 +30,19 @@ export default new Vuex.Store({
       })
       .catch(error => console.error('Error:', error ))
       .then( state.todos.push(payload) );
+    },
+
+    editTodo: function(state, payload) {
+      fetch(`/todos/${payload.todo.id}`, {
+        headers: {
+              'Content-Type': 'application/json'
+        },
+        method: 'PATCH',
+        body: JSON.stringify({ todo: payload.todo })
+      })
+      .then(response => { return response.json(); })
+      .catch(error => console.error('Error:', error ))
+      .then( response => {state.todos = response.data; });
     },
 
     deleteTodo: function(state, payload) {

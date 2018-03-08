@@ -61,6 +61,7 @@ export default {
     },
     editTodo: function(todo) {
       this.$store.commit('editTodo', { todo });
+      this.deactivateEdit(todo);
     },
     deactivateEdit: function(todo) {
       this.isEditing = {};

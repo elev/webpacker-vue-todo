@@ -7,20 +7,17 @@ class TodosController < ApplicationController
 
   def index
     @todos = Todo.all()
-    render json: { status: 200,
-                  data: @todos }
+    render json: { status: 200, data: @todos }
   end
 
   def update
     @todo = Todo.find(params[:id])
-    title = params[:title] || @todo.title
-    completed = params[:completed] || @todo.completed
 
-    if @todo.update_attributes( title: title,
-                                completed: completed )
+    if @todo.update_attributes( todo_params )
       @todos = Todo.all()
-      render json: { status: 200,
-                      data: @todos }
+      render json: { status: 200, data: @todos }
+    else
+      render json: { status: 500, data: 'broke' }
     end
   end
 
@@ -37,7 +34,7 @@ class TodosController < ApplicationController
   end
 
   def create
-    @newTodo = Todo.new(todo_create_params)
+    @newTodo = Todo.new(todo_params)
     @newTodo.save
     @todos = Todo.all()
     render json: { status: 200,
@@ -46,7 +43,7 @@ class TodosController < ApplicationController
 
   private
 
-  def todo_create_params
+  def todo_params
     params.require(:todo).permit(:title, :completed)
   end
 end
