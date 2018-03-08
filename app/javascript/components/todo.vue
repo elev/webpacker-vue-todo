@@ -5,10 +5,25 @@
 
       <div v-for="todo in todos">
         <div class="todo" :class="{ 'todo-editing': todo === isEditing }">
-          <input type="checkbox" v-model="todo.completed">
-          <label class="todo-label" :class="{ 'todo-completed': todo.completed }" @click="toggleEdit(todo)">{{ todo.title }}</label>
-          <input class="todo-edit" type="text" name="update" @keyup.enter="editTodo(todo)" placeholder="{todo.title}" value="{todo.title}">
+          <input type="checkbox"
+                v-model="todo.completed">
+
+          <label class="todo-label"
+                  :class="{ 'todo-completed': todo.completed }"
+                  @dblclick="activateEdit(todo)">
+            {{ todo.title }}
+          </label>
+
+          <input class="todo-edit"
+                v-input-focus="todo === isEditing"
+                v-model="todo.title"
+                type="text" name="update"
+                @blur="deactivateEdit"
+                @keyup.esc="deactivateEdit"
+                @keyup.enter="editTodo(todo)">
+
           <a @click="deleteTodo(todo)">delete</a>
+
         </div>
       </div>
       <div class="new-todo">
@@ -39,15 +54,20 @@ export default {
         title: this.newTodo, 
         completed: false 
       });
+      this.newTodo = '';
     },
     getTodos: function() {
-      this.$store.commit('loadTodos')
+      this.$store.commit('loadTodos');
     },
     editTodo: function(todo) {
-
+      this.$store.commit('editTodo', { todo });
     },
-    toggleEdit: function(todo) {
+    deactivateEdit: function(todo) {
+      this.isEditing = {};
+    },
+    activateEdit: function(todo) {
       this.isEditing = todo;
+
     },
     deleteTodo: function(todo) {
       this.$store.commit('deleteTodo', { todo });
@@ -55,6 +75,13 @@ export default {
   },
   created: function() {
     this.getTodos()
+  },
+  directives: {
+    'input-focus': function(element, binding) {
+      if (binding.value) {
+        element.focus();
+      }
+    }
   }
   
 }

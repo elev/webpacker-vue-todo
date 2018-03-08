@@ -8,6 +8,8 @@ This project uses webpacker.
 build better transitions for edit functionality
 
 send edit to rails.
+
+set up webpacker to use sass.
 =============================
 
 build error handling for apis
