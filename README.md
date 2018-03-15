@@ -7,9 +7,10 @@ This project uses webpacker.
 
 build better transitions for edit functionality
 
-send edit to rails.
+have different images for different viewports
 
-set up webpacker to use sass.
+clean up scss
+
 =============================
 
 build error handling for apis

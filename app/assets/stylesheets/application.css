@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+
+ //= require _reset
+ //= require _layout

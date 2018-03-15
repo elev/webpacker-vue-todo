@@ -1,29 +1,31 @@
 <template>
   <div id="app">
     <div class="todos">
-      <div style="height:200px;width:200px" class="todo-editing"></div>
-
       <div v-for="todo in todos">
-        <div class="todo" :class="{ 'todo-editing': todo === isEditing }">
-          <input type="checkbox"
-                v-model="todo.completed">
+        <div class="todo" :class="{ 'todos__editing': todo === isEditing }">
+          <div class="todos__grid">
+            <div class="todos__grid-item-left">
+              <input type="checkbox"
+                    v-model="todo.completed">
 
-          <label class="todo-label"
-                  :class="{ 'todo-completed': todo.completed }"
-                  @dblclick="activateEdit(todo)">
-            {{ todo.title }}
-          </label>
+              <label class="todos__label"
+                      :class="{ 'todos__completed': todo.completed }"
+                      @dblclick="activateEdit(todo)">
+                {{ todo.title }}
+              </label>
 
-          <input class="todo-edit"
-                v-input-focus="todo === isEditing"
-                v-model="todo.title"
-                type="text" name="update"
-                @blur="deactivateEdit"
-                @keyup.esc="deactivateEdit"
-                @keyup.enter="editTodo(todo)">
-
-          <a @click="deleteTodo(todo)">delete</a>
-
+              <input class="todos__edit"
+                    v-input-focus="todo === isEditing"
+                    v-model="todo.title"
+                    type="text" name="update"
+                    @blur="deactivateEdit"
+                    @keyup.esc="deactivateEdit"
+                    @keyup.enter="editTodo(todo)">
+            </div>
+            <div class="todos__grid-item-right">
+              <a @click="deleteTodo(todo)">delete</a>
+            </div>
+          </div>
         </div>
       </div>
       <div class="new-todo">
@@ -88,14 +90,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #FFFFFF;
+  font-size: 23px;
   margin-top: 60px;
+  text-align: center;
 }
 
 h1, h2 {
@@ -122,22 +126,54 @@ a {
   text-align: left;
 }
 
-.todo-completed {
-  text-decoration: line-through;
-}
+  .todos__grid {
+    width: 100%;
+    font-size: 0;
+  }
+
+    .todos__grid-item-left {
+      display: inline-block;
+      width: 90%;
+      text-align: left;
+      font-size: 23px;
+    }
+
+    .todos__grid-item-right {
+      display: inline-block;
+      width: 10%;
+      text-align: right;
+      font-size: 23px;
+    }
+
+  .todos__completed {
+    text-decoration: line-through;
+  }
 
 
-.todo-edit {
+.todos__editing {}
+
+.todos__edit {
   display: none;
+
+  .todos__editing & {
+    display: inline-block;
+    border: 0;
+    border-bottom: 1px solid white;
+    background: transparent;
+    color: white;
+    font-size: 30px;
+  }
 }
 
-.todo-label {
+.todos__label {
   display: inline-block;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+
+  .todos__editing & {
+    display: none;
+  }
 }
-
-.todo-editing .todo-label{ display: none; }
-
-.todo-editing .todo-edit { display: inline-block; }
 
 
 </style>
