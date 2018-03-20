@@ -6,11 +6,21 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "update" do
-    patch todo_url(@todo), params: { completed: true }
+    patch todo_url(@todo), params: { 
+        todo: {
+          title: @todo.title,
+          completed: true
+        }
+    }
     @todo.reload
     assert_equal true, @todo.completed  
 
-    patch todo_url(@todo), params: { title: 'new name' }
+    patch todo_url(@todo), params: { 
+      todo: {
+        title: 'new name',
+        completed: @todo.completed
+      }
+    }
     @todo.reload
     assert_equal 'new name', @todo.title     
   end
