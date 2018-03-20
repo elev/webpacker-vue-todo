@@ -6,7 +6,8 @@
           <div class="todos__grid">
             <div class="todos__grid-item-left">
               <input type="checkbox"
-                    v-model="todo.completed">
+                    v-model="todo.completed"
+                    @change="toggleCompleted(todo)">
 
               <label class="todos__label"
                       :class="{ 'todos__completed': todo.completed }"
@@ -74,6 +75,9 @@ export default {
     },
     deleteTodo: function(todo) {
       this.$store.commit('deleteTodo', { todo });
+    },
+    toggleCompleted: function(todo) {
+      this.$store.commit('editTodo', { todo }); 
     }
   },
   created: function() {

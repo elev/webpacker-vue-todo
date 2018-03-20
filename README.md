@@ -9,8 +9,6 @@ build better transitions for edit functionality
 
 have different images for different viewports
 
-clean up scss
-
 =============================
 
 build error handling for apis
